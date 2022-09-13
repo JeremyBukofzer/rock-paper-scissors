@@ -1,61 +1,40 @@
-// define array for choices [r,p,s]
-var choices = ['R', 'P', 'S']
-
+var choices = ["r", "p", "s"]
 var wins = 0
 var losses = 0
 var ties = 0
+var keepPlaying = true
 
-var keepPlaying
+while(keepPlaying) {
+  // prompt humanChoice
+  var humanChoice = prompt("Choose r, p, s")
+  console.log('human choice:', humanChoice)
 
+  // randomly choose computerChoice
+  var random = Math.floor(Math.random() * choices.length)
+  var computerChoice = choices[random]
+  console.log('computer choice:', computerChoice)
 
-// define var for userChoice
-// prompt userChoice
-var userChoice = prompt('Type R, P, or S:')
-console.log(userChoice)
-
-// randomly choose computerChoice
-// define var for computerChoice
-var random = Math.floor(Math.random() * choices.length)
-var computerChoice = choices[random]
-console.log(computerChoice)
-
-var result
-
-if (userChoice === computerChoice) {
+  var result
+  if (humanChoice === computerChoice) {
     ties++
-    result = 'tied'
-} else if (userChoice === 'R' && computerChoice === "S" ||
-userChoice === 'P' && computerChoice === "R" ||
-userChoice === 'S' && computerChoice === "P"
-) {
+    result = "tied!"
+  } else if (
+    humanChoice === "r" && computerChoice === "s" ||
+    humanChoice === "p" && computerChoice === "r" ||
+    humanChoice === "s" && computerChoice === "p"
+  ) {
     wins++
-    result = 'won!'
-} else {
+    result = "won!"
+  } else {
     losses++
-    result= 'lost!'
+    result = "lost!"
+  }
+
+  // display (alert) comparison results (won, tied, lost round)
+  alert("You " + result)
+
+  // show stats
+  alert("Stats:\nWins: " + wins + "\nLosses: " + losses + "\nTies: " + ties)
+
+  keepPlaying = confirm("Want to play again?")
 }
-
-// Compare choices
-alert('You ' + result)
-
-alert('Stats:\nWins: ' + wins + '\nLosses: ' + losses + '\nTies: ' + ties)
-
-
-
-
-var confirm('Want to play again?')
-
-
-
-
-
-
-// display (alert) results (win, tie, lose round)
-
-// show stats (number of wins, losses, and ties)
-
-// play again
-    //restart game
-// else
-    // end game
-
